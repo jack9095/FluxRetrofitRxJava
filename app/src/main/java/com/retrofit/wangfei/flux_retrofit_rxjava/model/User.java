@@ -1,144 +1,56 @@
 package com.retrofit.wangfei.flux_retrofit_rxjava.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
- * Created by fei.wang on 2016/2/22.
+ * Created by Android Studio
+ * User: wangfei
+ * Date: 2016-03-23
+ * Time: 9:57
+ * Description:  上传的参数
  */
 public class User {
 
+    private String from;
+    private String username;
+    private String userpass;
 
-    /**
-     * id : 1
-     * name : 王飞
-     * password : 123456
-     * sex : 男
-     * phone : 13795378745
-     * registerTime : 2016-03-16 15:03:56
-     * headPicture :
-     * logoPicture :
-     * diarySum : 0
-     * pictureSum : 0
-     */
-
-    private String id;
-    private String name;
-    private String password;
-    private String sex;
-    private String phone;
-
-    public User() {
+    public User(String from, String username, String userpass) {
+        this.from = from;
+        this.username = username;
+        this.userpass = userpass;
     }
 
-    public User(String name, String password, String sex, String phone, String registerTime, String headPicture, String logoPicture, String diarySum, String pictureSum) {
-        this.name = name;
-        this.password = password;
-        this.sex = sex;
-        this.phone = phone;
-        this.registerTime = registerTime;
-        this.headPicture = headPicture;
-        this.logoPicture = logoPicture;
-        this.diarySum = diarySum;
-        this.pictureSum = pictureSum;
+    public void setFrom(String from) {
+        this.from = from;
     }
 
-    private String registerTime;
-    private String headPicture;
-    private String logoPicture;
-    private String diarySum;
-    private String pictureSum;
-
-    public void setId(String id) {
-        this.id = id;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserpass(String userpass) {
+        this.userpass = userpass;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getFrom() {
+        return from;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public String getUsername() {
+        return username;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public void setRegisterTime(String registerTime) {
-        this.registerTime = registerTime;
-    }
-
-    public void setHeadPicture(String headPicture) {
-        this.headPicture = headPicture;
-    }
-
-    public void setLogoPicture(String logoPicture) {
-        this.logoPicture = logoPicture;
-    }
-
-    public void setDiarySum(String diarySum) {
-        this.diarySum = diarySum;
-    }
-
-    public void setPictureSum(String pictureSum) {
-        this.pictureSum = pictureSum;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public String getRegisterTime() {
-        return registerTime;
-    }
-
-    public String getHeadPicture() {
-        return headPicture;
-    }
-
-    public String getLogoPicture() {
-        return logoPicture;
-    }
-
-    public String getDiarySum() {
-        return diarySum;
-    }
-
-    public String getPictureSum() {
-        return pictureSum;
+    public String getUserpass() {
+        return userpass;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                ", sex='" + sex + '\'' +
-                ", phone='" + phone + '\'' +
-                ", registerTime='" + registerTime + '\'' +
-                ", headPicture='" + headPicture + '\'' +
-                ", logoPicture='" + logoPicture + '\'' +
-                ", diarySum='" + diarySum + '\'' +
-                ", pictureSum='" + pictureSum + '\'' +
+                "from='" + from + '\'' +
+                ", username='" + username + '\'' +
+                ", userpass='" + userpass + '\'' +
                 '}';
     }
 }

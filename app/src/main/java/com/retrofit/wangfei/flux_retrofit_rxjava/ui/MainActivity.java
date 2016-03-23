@@ -1,7 +1,9 @@
-package com.retrofit.wangfei.flux_retrofit_rxjava;
+package com.retrofit.wangfei.flux_retrofit_rxjava.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.retrofit.wangfei.flux_retrofit_rxjava.R;
 
 /**
  * Created by Android Studio
