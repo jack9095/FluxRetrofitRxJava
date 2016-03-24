@@ -33,7 +33,7 @@ public class GitHubApiUtils {
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://api.kuaigongchang.cn/")
+                .baseUrl("https://github.com/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .client(okHttpClient())

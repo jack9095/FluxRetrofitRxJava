@@ -5,6 +5,8 @@ import com.retrofit.wangfei.flux_retrofit_rxjava.model.User;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 import rx.Observable;
 
@@ -17,6 +19,7 @@ import rx.Observable;
  */
 public interface GitHubApi {
 
-    @POST("index.php/user/login")
-    Observable<GitHubUser> login(@Body User user);
+    @FormUrlEncoded
+    @POST("wangfeigit/FluxRetrofitRxJava.git")
+    Observable<GitHubUser> login(@Field("txtUserName") String username,@Field("txtPassword") String password);
 }

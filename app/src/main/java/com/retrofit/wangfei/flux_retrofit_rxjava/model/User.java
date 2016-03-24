@@ -11,46 +11,14 @@ import com.google.gson.annotations.SerializedName;
  */
 public class User {
 
-    private String from;
-    private String username;
-    private String userpass;
+    private String txtUserName;
+    private String txtPassword;
 
-    public User(String from, String username, String userpass) {
-        this.from = from;
-        this.username = username;
-        this.userpass = userpass;
+    public User() {
     }
 
-    public void setFrom(String from) {
-        this.from = from;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setUserpass(String userpass) {
-        this.userpass = userpass;
-    }
-
-    public String getFrom() {
-        return from;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getUserpass() {
-        return userpass;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "from='" + from + '\'' +
-                ", username='" + username + '\'' +
-                ", userpass='" + userpass + '\'' +
-                '}';
+    public User(String txtUserName, String txtPassword) {
+        this.txtUserName = txtUserName;
+        this.txtPassword = txtPassword;
     }
 }

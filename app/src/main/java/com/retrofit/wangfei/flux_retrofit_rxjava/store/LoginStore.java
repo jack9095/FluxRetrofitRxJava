@@ -53,7 +53,7 @@ public class LoginStore extends Store<LoginAction> {
                 post();
                 break;
             case LoginAction.LOGIN_VIEW:
-                changeEvent = new InitRecyclerViewChangeEvent();
+                changeEvent = new InitViewChangeEvent();
                 user = (GitHubUser) action.getData();
                 post();
                 break;
@@ -72,7 +72,7 @@ public class LoginStore extends Store<LoginAction> {
 
     public class LoadingStartChangeEvent extends StoreChangeEvent {}
 
-    public class InitRecyclerViewChangeEvent extends StoreChangeEvent {}
+    public class InitViewChangeEvent extends StoreChangeEvent {}
 
     public class ErrorChangeEvent extends StoreChangeEvent {}
 }

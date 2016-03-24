@@ -47,13 +47,14 @@ public class LoginActionCreator extends ActionCreator {
 
     /**
      * 提取数据
-     * @param users  请求参数
+     * @param user
+     * @param pass
      */
-    public void fetechData(User users) {
+    public void fetechData(String user,String pass) {
         dispatcher.dispatcher(new LoginAction(LoginAction.LOGIN_START, null));
 
         // Rx
-        Observable.merge(getObservables(users))
+        Observable.merge(getObservables(user,pass))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<GitHubUser>() {
@@ -70,9 +71,9 @@ public class LoginActionCreator extends ActionCreator {
     }
 
     @NonNull
-    private List<Observable<GitHubUser>> getObservables(User user) {
+    private List<Observable<GitHubUser>> getObservables(String user,String pass) {
         List<Observable<GitHubUser>>  lists = new ArrayList<>();
-        Observable<GitHubUser> result = GitHubApiUtils.getInstance().getGitHubApi().login(user);// 利用网络请求拿到的数据
+        Observable<GitHubUser> result = GitHubApiUtils.getInstance().getGitHubApi().login(user,pass);// 利用网络请求拿到的数据
         lists.add(result);
         return lists;
     }

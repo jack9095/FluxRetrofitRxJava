@@ -6,6 +6,9 @@ import com.google.gson.annotations.SerializedName;
  * Created by wangfei on 2016/3/23.
  */
 public class GitHubUser {
-    @SerializedName("code")
-    public String code;
+    @SerializedName("status")
+    public String status;
+
+    @SerializedName("msg")
+    public String msg;
 }
