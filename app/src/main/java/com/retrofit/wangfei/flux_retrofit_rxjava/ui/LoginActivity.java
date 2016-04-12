@@ -15,6 +15,7 @@ import com.retrofit.wangfei.flux_retrofit_rxjava.action.LoginActionCreator;
 import com.retrofit.wangfei.flux_retrofit_rxjava.dispatcher.Dispatcher;
 import com.retrofit.wangfei.flux_retrofit_rxjava.model.GitHubUser;
 import com.retrofit.wangfei.flux_retrofit_rxjava.store.LoginStore;
+import com.retrofit.wangfei.flux_retrofit_rxjava.util.DebugLog;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -50,6 +51,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         button = (TextView) findViewById(R.id.button);
         progress_bar = (CircularProgressBar) findViewById(R.id.progress_bar);
         button.setOnClickListener(this);
+
+        DebugLog.i("王飞");
     }
 
     @NonNull
@@ -91,12 +94,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onDestroy();
         loginStore.unRegister(this);
         dispatcher.unRegister(loginStore);
+        DebugLog.wtf("上海");
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button:
+                DebugLog.e("徐汇");
                 loginActionCreator.fetechData(name.getText().toString(), password.getText().toString());
                 startActivity(new Intent(LoginActivity.this,RecycleViewDetailActivity.class));
                 break;

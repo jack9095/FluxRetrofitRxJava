@@ -1,6 +1,8 @@
 package com.retrofit.wangfei.flux_retrofit_rxjava.ui;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -30,6 +32,8 @@ import butterknife.OnClick;
  */
 public class RecycleViewDetailActivity extends AppCompatActivity implements View.OnClickListener{
 
+    @Bind(R.id.appbar)
+    AppBarLayout appbar;
     @Bind(R.id.iv_detail)
     ImageView ivDetail;
     @Bind(R.id.toolbar)
@@ -49,6 +53,16 @@ public class RecycleViewDetailActivity extends AppCompatActivity implements View
         setContentView(R.layout.activity_recycle_view_detail);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
+
+        // AppBar的监听
+        appbar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                int maxScroll = appBarLayout.getTotalScrollRange();
+                float percentage = (float) Math.abs(verticalOffset) / (float) maxScroll;
+                toolbar.setBackgroundColor(Color.argb((int) (percentage * 255), 19, 121, 214));
+            }
+        });
     }
 
     /**标题栏最右边图片点击展开后的菜单布局*/

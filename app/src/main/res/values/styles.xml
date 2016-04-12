@@ -27,4 +27,14 @@
         <item name="android:orientation">vertical</item>
     </style>
 
+
+    <!--Toolbar 样式-->
+    <style name="Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:background">?attr/colorPrimary</item>
+    </style>
+
+    <style name="ToolbarPopUp" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:background">#FFF5F5F5</item>
+    </style>
+
 </resources>

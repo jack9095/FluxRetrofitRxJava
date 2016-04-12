@@ -23,7 +23,8 @@
         <activity
             android:name=".ui.RecycleViewDetailActivity"
             android:label="@string/title_activity_rectcle_view"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.MainActivity"></activity>
     </application>
 
 </manifest>
