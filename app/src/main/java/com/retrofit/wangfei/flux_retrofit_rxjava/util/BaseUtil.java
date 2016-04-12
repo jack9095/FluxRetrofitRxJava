@@ -87,7 +87,7 @@ public class BaseUtil {
         return yymmddString;
     }
 
-    //分享
+    //安卓自带分享
     public static void share(Context context, String questionTitle, String questionUrl) {
         Intent share = new Intent(Intent.ACTION_SEND);
         share.setType("text/plain");
