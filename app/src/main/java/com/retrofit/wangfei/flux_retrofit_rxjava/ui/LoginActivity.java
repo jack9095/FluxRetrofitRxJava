@@ -1,9 +1,11 @@
 package com.retrofit.wangfei.flux_retrofit_rxjava.ui;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,12 +14,12 @@ import com.retrofit.wangfei.flux_retrofit_rxjava.R;
 import com.retrofit.wangfei.flux_retrofit_rxjava.action.LoginActionCreator;
 import com.retrofit.wangfei.flux_retrofit_rxjava.dispatcher.Dispatcher;
 import com.retrofit.wangfei.flux_retrofit_rxjava.model.GitHubUser;
-import com.retrofit.wangfei.flux_retrofit_rxjava.model.User;
 import com.retrofit.wangfei.flux_retrofit_rxjava.store.LoginStore;
-import com.retrofit.wangfei.flux_retrofit_rxjava.util.MD5Utils;
 
 import org.greenrobot.eventbus.Subscribe;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import fr.castorflex.android.circularprogressbar.CircularProgressBar;
 
 /**
@@ -28,9 +30,9 @@ import fr.castorflex.android.circularprogressbar.CircularProgressBar;
  * QQ: 929728742
  * Description:
  */
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText name,password;
+    private EditText name, password;
     private TextView button;
     private CircularProgressBar progress_bar;
     private Dispatcher dispatcher;
@@ -40,7 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
+        ButterKnife.bind(this);
         initDependencies();
         name = (EditText) findViewById(R.id.extractEditText);
         password = (EditText) findViewById(R.id.extractEditText2);
@@ -59,27 +62,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Subscribe
-    public void onLoadingStartChangeEvent(LoginStore.LoadingStartChangeEvent changeEvent){
+    public void onLoadingStartChangeEvent(LoginStore.LoadingStartChangeEvent changeEvent) {
         if (changeEvent != null) {
             progress_bar.setVisibility(View.VISIBLE);
         }
     }
 
     @Subscribe
-    public void onInitViewChangeEvent(LoginStore.InitViewChangeEvent changeEvent){
+    public void onInitViewChangeEvent(LoginStore.InitViewChangeEvent changeEvent) {
         progress_bar.setVisibility(View.GONE);
         if (changeEvent != null) {
             GitHubUser userList = loginStore.getUserList();
-            Toast.makeText(this,userList.status + " " +userList.msg ,Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, userList.status + " " + userList.msg, Toast.LENGTH_SHORT).show();
         }
     }
 
     @Subscribe
-    public void onErrorChangeEvent(LoginStore.ErrorChangeEvent changeEvent){
+    public void onErrorChangeEvent(LoginStore.ErrorChangeEvent changeEvent) {
         progress_bar.setVisibility(View.GONE);
         if (changeEvent != null) {
             Throwable throwable = loginStore.getThrowable();
-            Toast.makeText(this,throwable.toString(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, throwable.toString(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -92,9 +95,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.button:
-                loginActionCreator.fetechData(name.getText().toString(),password.getText().toString());
+                loginActionCreator.fetechData(name.getText().toString(), password.getText().toString());
+                startActivity(new Intent(LoginActivity.this,RecycleViewDetailActivity.class));
                 break;
         }
     }

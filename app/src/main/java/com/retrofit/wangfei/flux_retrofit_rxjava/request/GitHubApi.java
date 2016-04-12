@@ -20,6 +20,6 @@ import rx.Observable;
 public interface GitHubApi {
 
     @FormUrlEncoded
-    @POST("wangfeigit/FluxRetrofitRxJava.git")
+    @POST("wangfeigit/FluxRetrofitRxJava.git") // 请求接口路径路径
     Observable<GitHubUser> login(@Field("txtUserName") String username,@Field("txtPassword") String password);
 }
