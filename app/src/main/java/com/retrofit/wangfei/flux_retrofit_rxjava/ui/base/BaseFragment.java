@@ -175,6 +175,7 @@ public abstract class BaseFragment extends Fragment{
 
 
 
+
     /**
      * 当fragment 第一次不可见，我们不建议做点什么
      */
