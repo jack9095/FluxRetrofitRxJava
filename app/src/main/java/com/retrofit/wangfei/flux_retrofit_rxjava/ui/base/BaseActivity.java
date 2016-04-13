@@ -35,7 +35,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @param clazz
      */
-    protected void readyGo(Class<?> clazz) {
+    public void readyGo(Class<?> clazz) {
         Intent intent = new Intent(this, clazz);
         startActivity(intent);
     }
@@ -91,7 +91,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      *   http://blog.csdn.net/hwe_xc/article/details/50553758
      *   @param color  自定义传入的颜色
      */
-    protected void setSystemBarTintDrawable(String color) {
+    public void setSystemBarTintDrawable(String color) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             setTranslucentStatus(true);
             SystemBarTintManager mTintManager = new SystemBarTintManager(this);
