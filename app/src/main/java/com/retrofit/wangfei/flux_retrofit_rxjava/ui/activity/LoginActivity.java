@@ -14,6 +14,7 @@ import com.retrofit.wangfei.flux_retrofit_rxjava.action.LoginActionCreator;
 import com.retrofit.wangfei.flux_retrofit_rxjava.dispatcher.Dispatcher;
 import com.retrofit.wangfei.flux_retrofit_rxjava.model.GitHubUser;
 import com.retrofit.wangfei.flux_retrofit_rxjava.store.LoginStore;
+import com.retrofit.wangfei.flux_retrofit_rxjava.ui.base.BaseActivity;
 import com.retrofit.wangfei.flux_retrofit_rxjava.util.DebugLog;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -29,7 +30,7 @@ import fr.castorflex.android.circularprogressbar.CircularProgressBar;
  * QQ: 929728742
  * Description:
  */
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText name, password;
     private TextView button;
@@ -43,6 +44,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        setSystemBarTintDrawable("#24b7a4");
         initDependencies();
         name = (EditText) findViewById(R.id.extractEditText);
         password = (EditText) findViewById(R.id.extractEditText2);

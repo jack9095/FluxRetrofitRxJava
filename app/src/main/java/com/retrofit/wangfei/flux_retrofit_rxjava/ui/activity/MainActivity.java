@@ -89,6 +89,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        setSystemBarTintDrawable("#24b7a4");
         initView();
         setupToolbar();
         setUpDrawer();
