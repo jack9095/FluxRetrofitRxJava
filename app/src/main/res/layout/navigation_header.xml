@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="192dp"
-    android:background="#1379d6"
+    android:background="@color/colorBlueDark"
     android:gravity="bottom"
     android:orientation="vertical"
     android:padding="16dp"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="肆月"
-        android:textColor="#ffffff"
+        android:textColor="@color/textWhite"
         android:textSize="16sp" />
 
     <TextView
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="爱江山更爱美人"
-        android:textColor="#ffffff"
+        android:textColor="@color/text_gray_c"
         android:textSize="12sp" />
 
 </LinearLayout>

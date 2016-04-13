@@ -1,4 +1,4 @@
-package com.retrofit.wangfei.flux_retrofit_rxjava.ui;
+package com.retrofit.wangfei.flux_retrofit_rxjava.ui.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.retrofit.wangfei.flux_retrofit_rxjava.R;
+import com.retrofit.wangfei.flux_retrofit_rxjava.ui.base.BaseActivity;
 import com.retrofit.wangfei.flux_retrofit_rxjava.util.ToastUtils;
 
 import butterknife.Bind;
@@ -25,12 +26,12 @@ import butterknife.OnClick;
 /**
  * Created by Android Studio
  * User: wangfei
- * Date: 2016-03-23
+ * Date: 2016-04-13
  * Time: 9:57
  * QQ: 929728742
  * Description: 点击RecycleView的item跳转的详情页面
  */
-public class RecycleViewDetailActivity extends AppCompatActivity implements View.OnClickListener{
+public class RecycleViewDetailActivity extends BaseActivity implements View.OnClickListener{
 
     @Bind(R.id.appbar)
     AppBarLayout appbar;

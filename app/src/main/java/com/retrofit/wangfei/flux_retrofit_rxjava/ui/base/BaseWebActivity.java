@@ -35,11 +35,6 @@ public class BaseWebActivity extends BaseActivity {
         initViewsAndEvents();
     }
 
-    @Override
-    protected View getLoadingTargetView() {
-        return null;
-    }
-
     /**获取WebView页面标题和链接*/
     protected void getBundleExtras() {
         Bundle extras = getIntent().getExtras();
@@ -72,7 +67,7 @@ public class BaseWebActivity extends BaseActivity {
         if (!CommonUtils.isEmpty(mWebUrl)) {
             mBrowserLayout.loadUrl(mWebUrl);
         } else {
-            showToast("获取URL地址失败");
+            showToast(findViewById(R.id.activity_common_web),"获取URL地址失败");
         }
 
         if (!isShowBottomBar) {

@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.LoginActivity"
+            android:name="com.retrofit.wangfei.flux_retrofit_rxjava.ui.activity.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,10 +21,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.RecycleViewDetailActivity"
+            android:name=".ui.activity.RecycleViewDetailActivity"
             android:label="@string/title_activity_rectcle_view"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.MainActivity"></activity>
+        <activity android:name="com.retrofit.wangfei.flux_retrofit_rxjava.ui.activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

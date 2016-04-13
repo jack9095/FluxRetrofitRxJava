@@ -34,7 +34,7 @@
     </style>
 
     <style name="ToolbarPopUp" parent="ThemeOverlay.AppCompat.Light">
-        <item name="android:background">#FFF5F5F5</item>
+        <item name="android:background">@color/theme_window_background</item>
     </style>
 
 </resources>

@@ -39,7 +39,7 @@ import com.retrofit.wangfei.flux_retrofit_rxjava.util.CommonUtils;
  * Author:  Tau.Chen
  * Email:   1076559197@qq.com | tauchen1990@gmail.com
  * Date:    2015/3/31.
- * Description:
+ * Description: BaseWebActivity布局中使用
  */
 public class BrowserLayout extends LinearLayout {
 

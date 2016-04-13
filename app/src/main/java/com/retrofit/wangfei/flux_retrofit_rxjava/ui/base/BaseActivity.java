@@ -85,15 +85,10 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @param msg
      */
-    protected void showToast(String msg) {
+    protected void showToast(View view,String msg) {
         //防止遮盖虚拟按键
         if (null != msg && !CommonUtils.isEmpty(msg)) {
-            Snackbar.make(getLoadingTargetView(), msg, Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(view, msg, Snackbar.LENGTH_SHORT).show();
         }
     }
-
-    /**
-     * get loading target view
-     */
-    protected abstract View getLoadingTargetView();
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1379d6</color>
-    <color name="colorPrimaryDark">#1079d6</color>
+    <color name="colorPrimary">#263238</color>
+    <color name="colorPrimaryDark">#263238</color>
     <color name="colorAccent">#FF4081</color>
 
     <color name="theme_primary_accent">#8BC34A</color>
@@ -11,14 +11,16 @@
     <color name="theme_divider">#B6B6B6</color>
 
 
+    <color name="theme_bg_white">#212b30</color>
+    <color name="theme_bg_line_gray">#333</color>
+    <color name="theme_text_black">#fff</color>
+    <color name="theme_text_white">#212b30</color>
+
+
+
+
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#727272</color>
-
-    <color name="theme_bg_white">#ffffff</color>
-    <color name="theme_bg_line_gray">#eeeeee</color>
-    <color name="theme_text_black">#333</color>
-    <color name="theme_text_white">#fff</color>
-
 
     <color name="colorBlue">#69b3e0</color>
     <color name="colorBlueDark">#1379d6</color>
@@ -38,23 +40,10 @@
     <color name="drawer_draft_coclor">#ff6fc624</color>
     <color name="drawer_question_coclor">#fffecb2f</color>
 
-    <color name="list_item_title">#333333</color>
-    <color name="list_background">#fff</color>
+    <color name="list_item_title">#fff</color>
+    <color name="list_background">#212b30</color>
     <color name="list_background_pressed">#eee</color>
     <color name="list_divider">#00000000</color>
 
-
-    <!--加载进度条-->
-    <integer-array name="gplus_colors">
-        <item>@color/gplus_color_1</item>
-        <item>@color/gplus_color_2</item>
-        <item>@color/gplus_color_3</item>
-        <item>@color/gplus_color_4</item>
-    </integer-array>
-
-    <color name="gplus_color_1">#3e802f</color>
-    <color name="gplus_color_2">#f4b400</color>
-    <color name="gplus_color_3">#427fed</color>
-    <color name="gplus_color_4">#b23424</color>
 
 </resources>

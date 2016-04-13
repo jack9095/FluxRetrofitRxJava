@@ -1,11 +1,10 @@
-package com.retrofit.wangfei.flux_retrofit_rxjava.ui;
+package com.retrofit.wangfei.flux_retrofit_rxjava.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +18,6 @@ import com.retrofit.wangfei.flux_retrofit_rxjava.util.DebugLog;
 
 import org.greenrobot.eventbus.Subscribe;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 import fr.castorflex.android.circularprogressbar.CircularProgressBar;
 
@@ -103,7 +101,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.button:
                 DebugLog.e("徐汇");
                 loginActionCreator.fetechData(name.getText().toString(), password.getText().toString());
-                startActivity(new Intent(LoginActivity.this,RecycleViewDetailActivity.class));
+                startActivity(new Intent(LoginActivity.this,MainActivity.class));
                 break;
         }
     }
