@@ -1,4 +1,4 @@
-package com.retrofit.wangfei.flux_retrofit_rxjava.persenter;
+package com.retrofit.wangfei.flux_retrofit_rxjava.presenter;
 
 /**
  * User: wangfei
@@ -7,7 +7,7 @@ package com.retrofit.wangfei.flux_retrofit_rxjava.persenter;
  * QQ: 929728742
  * Description:  Persenter的基类
  */
-public abstract class BasePersenter {
+public abstract class BasePresenter {
 
     /** 初始化方法*/
     public abstract void initialize();

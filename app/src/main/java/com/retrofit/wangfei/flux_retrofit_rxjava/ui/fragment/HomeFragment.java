@@ -3,6 +3,7 @@ package com.retrofit.wangfei.flux_retrofit_rxjava.ui.fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.retrofit.wangfei.flux_retrofit_rxjava.R;
 import com.retrofit.wangfei.flux_retrofit_rxjava.ui.base.BaseFragment;
 import com.retrofit.wangfei.flux_retrofit_rxjava.util.eventbus.EventCenter;
 
@@ -38,7 +39,8 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected View initView(LayoutInflater inflater) {
-        return null;
+        view = inflater.inflate(R.layout.fragment_home_recycle_view_layout, null);
+        return view;
     }
 
     @Override

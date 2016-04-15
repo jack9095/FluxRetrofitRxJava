@@ -1,22 +1,21 @@
-package com.retrofit.wangfei.flux_retrofit_rxjava.persenter;
+package com.retrofit.wangfei.flux_retrofit_rxjava.presenter;
 
 import android.content.res.TypedArray;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.retrofit.wangfei.flux_retrofit_rxjava.R;
 import com.retrofit.wangfei.flux_retrofit_rxjava.adapter.DrawerLayoutAdapter;
 import com.retrofit.wangfei.flux_retrofit_rxjava.model.DrawerLayoutItem;
 import com.retrofit.wangfei.flux_retrofit_rxjava.ui.activity.MainActivity;
 import com.retrofit.wangfei.flux_retrofit_rxjava.ui.activity.RecycleViewDetailActivity;
-import com.retrofit.wangfei.flux_retrofit_rxjava.ui.base.BaseWebActivity;
 import com.retrofit.wangfei.flux_retrofit_rxjava.ui.fragment.CollectFragment;
 import com.retrofit.wangfei.flux_retrofit_rxjava.ui.fragment.DraftFragment;
 import com.retrofit.wangfei.flux_retrofit_rxjava.ui.fragment.FindFragment;
@@ -30,6 +29,7 @@ import com.retrofit.wangfei.flux_retrofit_rxjava.util.NightModeHelper;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
 import butterknife.OnClick;
 
 /**
@@ -39,9 +39,9 @@ import butterknife.OnClick;
  * QQ: 929728742
  * Description:  主页面侧拉框的逻辑
  */
-public class MainPersenter extends BasePersenter implements View.OnClickListener{
+public class MainDrawerLayoutPresenter extends BasePresenter implements View.OnClickListener {
 
-    private NightModeHelper nightModeHelper;          //日夜模式切换
+    public NightModeHelper nightModeHelper;          //日夜模式切换
     private ListView mDrawerMenuListView;                     // 侧拉框布局的ListView
     public ArrayList<DrawerLayoutItem> drawerItems;  // 侧拉框布局的ListView中item显示的数据集合
     private String[] mNavMenuTitles;    // 侧拉框布局的ListView中item标题数组
@@ -53,32 +53,42 @@ public class MainPersenter extends BasePersenter implements View.OnClickListener
 
     private MainActivity mMainActivity;
 
-    public MainPersenter(MainActivity mMainActivity) {
+    /**主页面侧拉框的逻辑*/
+    public MainDrawerLayoutPresenter(MainActivity mMainActivity) {
         this.mMainActivity = mMainActivity;
     }
 
     @Override
     public void initialize() {
-        mMainActivity.setSystemBarTintDrawable("#24b7a4");
         initView();
         setupToolbar();
         setUpDrawer();
     }
 
-    /**初始化控件*/
-    private void initView(){
+    /**
+     * 初始化控件
+     */
+    private void initView() {
+        mMainActivity.userImg.setOnClickListener(this);
+        mMainActivity.tvChangeTheme.setOnClickListener(this);
+        mMainActivity.tvSetting.setOnClickListener(this);
         nightModeHelper = new NightModeHelper(mMainActivity);
-        GlideUtil.loadImage(mMainActivity,"http://fxblog.oss-cn-beijing.aliyuncs.com/avatar_img.png",mMainActivity.userImg);
+//        nightModeHelper.toggle();
+        GlideUtil.loadImage(mMainActivity, "http://fxblog.oss-cn-beijing.aliyuncs.com/avatar_img.png", mMainActivity.userImg);
     }
 
-    /**设置Toolbar功能属性*/
+    /**
+     * 设置Toolbar功能属性
+     */
     private void setupToolbar() {
         final ActionBar ab = getActionBarToolbar();
         ab.setHomeAsUpIndicator(R.mipmap.ic_menu);
         ab.setDisplayHomeAsUpEnabled(true);
     }
 
-    /**获取Toolbar*/
+    /**
+     * 获取Toolbar
+     */
     protected ActionBar getActionBarToolbar() {
 //        if (toolbar == null) {
 //            toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -90,21 +100,27 @@ public class MainPersenter extends BasePersenter implements View.OnClickListener
         return mMainActivity.getSupportActionBar();
     }
 
-    /**打开侧拉框*/
+    /**
+     * 打开侧拉框
+     */
     public void openDrawer() {
         if (mMainActivity.drawerLayout == null)
             return;
         mMainActivity.drawerLayout.openDrawer(GravityCompat.START);
     }
 
-    /**关闭侧拉框*/
+    /**
+     * 关闭侧拉框
+     */
     public void closeDrawer() {
         if (mMainActivity.drawerLayout == null)
             return;
         mMainActivity.drawerLayout.closeDrawer(GravityCompat.START);
     }
 
-    /**设置侧拉框*/
+    /**
+     * 设置侧拉框
+     */
     private void setUpDrawer() {
         if (mMainActivity.drawerLayout == null) {
             // current activity does not have a drawer.
@@ -121,8 +137,10 @@ public class MainPersenter extends BasePersenter implements View.OnClickListener
                     .getResourceId(i, -1), mNavMenuIconTintTypeArray.getResourceId(i, -1))); // 给侧拉框ListView对应Item赋值
         }
         mNavMenuIconsTypeArray.recycle(); // 用完及时回收
-        adapter = new DrawerLayoutAdapter(drawerItems,mMainActivity);
+        adapter = new DrawerLayoutAdapter(drawerItems, mMainActivity);
         mDrawerMenuListView.setAdapter(adapter);
+
+        /**侧拉框ListView对应Item点击事件*/
         mDrawerMenuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -193,21 +211,19 @@ public class MainPersenter extends BasePersenter implements View.OnClickListener
         nightModeHelper.toggle();
     }
 
-    @OnClick({R.id.user_img, R.id.tv_setting, R.id.tv_change_theme})
-    public void onClick(View v) {
-        switch (v.getId()) {
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.user_img:
                 closeDrawer();
                 mMainActivity.readyGo(RecycleViewDetailActivity.class);
                 break;
-            case R.id.tv_setting:
-
-                break;
             case R.id.tv_change_theme:
                 changeTheme(mMainActivity.homeLayout);
                 break;
+            case R.id.tv_setting:
+                closeDrawer();
+                mMainActivity.readyGo(RecycleViewDetailActivity.class);
+                break;
         }
     }
-
-
 }

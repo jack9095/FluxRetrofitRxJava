@@ -1,16 +1,11 @@
 package com.retrofit.wangfei.flux_retrofit_rxjava.ui.activity;
 
-import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,27 +13,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.retrofit.wangfei.flux_retrofit_rxjava.R;
-import com.retrofit.wangfei.flux_retrofit_rxjava.adapter.DrawerLayoutAdapter;
-import com.retrofit.wangfei.flux_retrofit_rxjava.model.DrawerLayoutItem;
-import com.retrofit.wangfei.flux_retrofit_rxjava.persenter.MainPersenter;
+import com.retrofit.wangfei.flux_retrofit_rxjava.presenter.MainDrawerLayoutPresenter;
+import com.retrofit.wangfei.flux_retrofit_rxjava.presenter.MainTabLayoutPresenter;
 import com.retrofit.wangfei.flux_retrofit_rxjava.ui.base.BaseActivity;
 import com.retrofit.wangfei.flux_retrofit_rxjava.ui.base.BaseWebActivity;
-import com.retrofit.wangfei.flux_retrofit_rxjava.ui.fragment.CollectFragment;
-import com.retrofit.wangfei.flux_retrofit_rxjava.ui.fragment.DraftFragment;
-import com.retrofit.wangfei.flux_retrofit_rxjava.ui.fragment.FindFragment;
-import com.retrofit.wangfei.flux_retrofit_rxjava.ui.fragment.FollowFragment;
-import com.retrofit.wangfei.flux_retrofit_rxjava.ui.fragment.HomeFragment;
-import com.retrofit.wangfei.flux_retrofit_rxjava.ui.fragment.QuestionFragment;
 import com.retrofit.wangfei.flux_retrofit_rxjava.util.BaseUtil;
-import com.retrofit.wangfei.flux_retrofit_rxjava.util.DebugLog;
-import com.retrofit.wangfei.flux_retrofit_rxjava.util.GlideUtil;
-import com.retrofit.wangfei.flux_retrofit_rxjava.util.NightModeHelper;
-
-import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 
 /**
@@ -51,22 +33,27 @@ import butterknife.OnClick;
  */
 public class MainActivity extends BaseActivity{
 
-    @Bind(R.id.toolbar)
-    public Toolbar toolbar;
-    @Bind(R.id.content)
-    public FrameLayout content;
+    /**侧拉框 start*/
     @Bind(R.id.user_img)
     public ImageView userImg;
     @Bind(R.id.tv_name)
     public TextView tvName;
     @Bind(R.id.tv_autograph)
     public TextView tvAutograph;
+    @Bind(R.id.left_menu)
+    public ListView leftMenu;
     @Bind(R.id.tv_change_theme)
     public TextView tvChangeTheme;
     @Bind(R.id.tv_setting)
     public TextView tvSetting;
     @Bind(R.id.nv_drawer_layout)
     public LinearLayout nvDrawerLayout;
+    /**侧拉框 end*/
+
+    @Bind(R.id.toolbar)
+    public Toolbar toolbar;
+    @Bind(R.id.content)
+    public FrameLayout content;
     @Bind(R.id.drawer_layout)
     public DrawerLayout drawerLayout;
     @Bind(R.id.mengban_view)
@@ -74,15 +61,19 @@ public class MainActivity extends BaseActivity{
     @Bind(R.id.home_layout)
     public FrameLayout homeLayout;
 
-    private MainPersenter mMainPersenter;
+    private MainDrawerLayoutPresenter mMainDrawerLayoutPresenter;
+    private MainTabLayoutPresenter mMainTabLayoutPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mMainPersenter = new MainPersenter(this);
         ButterKnife.bind(this);
-        mMainPersenter.initialize();
+        setSystemBarTintDrawable("#24b7a4");
+        mMainTabLayoutPresenter = new MainTabLayoutPresenter(this);
+        mMainTabLayoutPresenter.initialize();
+        mMainDrawerLayoutPresenter = new MainDrawerLayoutPresenter(this);
+        mMainDrawerLayoutPresenter.initialize();
     }
 
     /**标题栏最右边图片点击展开后的菜单布局*/
@@ -97,7 +88,7 @@ public class MainActivity extends BaseActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                mMainPersenter.openDrawer();
+                mMainDrawerLayoutPresenter.openDrawer();
                 return true;
             case R.id.action_settings:
                 Bundle extras = new Bundle();
@@ -117,12 +108,12 @@ public class MainActivity extends BaseActivity{
     public void onBackPressed() {
 
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) { // 返回的时候如果侧拉框是打开状态，就关闭掉
-            mMainPersenter.closeDrawer();
+            mMainDrawerLayoutPresenter.closeDrawer();
             return;
         }
 
-        if (mMainPersenter.position != 0) {
-            mMainPersenter.selectItem(0, mMainPersenter.drawerItems.get(0).title);  // 默认为第一个item
+        if (mMainDrawerLayoutPresenter.position != 0) {
+            mMainDrawerLayoutPresenter.selectItem(0, mMainDrawerLayoutPresenter.drawerItems.get(0).title);  // 默认为第一个item
         } else {
             super.onBackPressed();
         }

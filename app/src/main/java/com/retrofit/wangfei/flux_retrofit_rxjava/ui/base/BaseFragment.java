@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
 public abstract class BaseFragment extends Fragment{
 
     protected Context context;
-    private View view;
+    protected View view;
     private boolean isPrepared; // 标志位，标志已经初始化完成
     private boolean isFirstResume = true; // 是否第一次可见
     private boolean isFirstVisible = true;
@@ -135,7 +135,7 @@ public abstract class BaseFragment extends Fragment{
     }
 
     /**
-     * 这种方法就像Fragment的生命周期方法onResume()
+     * 这种方法就像Fragment的生命周期方法onResume(),在这个方法中可以加载数据
      */
     protected abstract void onUserVisible();
 
@@ -151,7 +151,7 @@ public abstract class BaseFragment extends Fragment{
     protected abstract void onFirstUserVisible();
 
     /**
-     * init all views and add events
+     * init all views and add events 在onViewCreated方法中执行
      */
     protected abstract void initViewsAndEvents();
 

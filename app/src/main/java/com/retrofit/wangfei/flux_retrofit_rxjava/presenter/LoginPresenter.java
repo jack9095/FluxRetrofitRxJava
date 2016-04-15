@@ -1,4 +1,4 @@
-package com.retrofit.wangfei.flux_retrofit_rxjava.persenter;
+package com.retrofit.wangfei.flux_retrofit_rxjava.presenter;
 
 /**
  * Created by Android Studio
@@ -8,7 +8,7 @@ package com.retrofit.wangfei.flux_retrofit_rxjava.persenter;
  * QQ: 929728742
  * Description:
  */
-public class LoginPersenter extends BasePersenter{
+public class LoginPresenter extends BasePresenter {
 
     @Override
     public void initialize() {
