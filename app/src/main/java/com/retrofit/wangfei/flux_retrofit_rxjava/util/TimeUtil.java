@@ -58,4 +58,5 @@ public class TimeUtil {
 		String dateS = mDateFormat.format(date);
 		return dateS;
 	}
+
 }
