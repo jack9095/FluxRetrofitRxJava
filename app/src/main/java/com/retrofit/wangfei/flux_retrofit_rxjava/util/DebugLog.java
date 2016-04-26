@@ -25,13 +25,15 @@ public class DebugLog{
 	static String className;
 	static String methodName;
 	static int lineNumber;
+	public static boolean isDebug;   // 在application中onCreate方法中设置是否需要打印日志出来，设置为true，打印，false不打印日志
 	
     private DebugLog(){
         /* Protect from instantiations */
     }
 
 	public static boolean isDebuggable() {
-		return BuildConfig.DEBUG;
+//		return BuildConfig.DEBUG;
+		return isDebug;
 	}
 
 	private static String createLog( String log ) {

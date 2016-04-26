@@ -59,4 +59,14 @@ public class TimeUtil {
 		return dateS;
 	}
 
+	/**获取当前时间*/
+	public String refFormatNowDate() {
+		Date nowTime = new Date(System.currentTimeMillis());
+		SimpleDateFormat sdFormatter = new SimpleDateFormat("yyyyMMdd");
+		String retStrFormatNowDate = sdFormatter.format(nowTime);
+
+		return retStrFormatNowDate;
+	}
+
+
 }

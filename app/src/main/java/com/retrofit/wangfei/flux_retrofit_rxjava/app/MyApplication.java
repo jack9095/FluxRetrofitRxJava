@@ -4,6 +4,7 @@ import android.app.Application;
 import android.os.StrictMode;
 
 import com.retrofit.wangfei.flux_retrofit_rxjava.util.CrashHandler;
+import com.retrofit.wangfei.flux_retrofit_rxjava.util.DebugLog;
 import com.retrofit.wangfei.flux_retrofit_rxjava.util.ToastUtils;
 import com.squareup.leakcanary.LeakCanary;
 
