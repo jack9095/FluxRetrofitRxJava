@@ -1,11 +1,14 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+
+    /**是声明仓库的源，我这里用的是mavenCentral(),jcenter可以理解成是一个新的中央远程仓库，兼容maven中心仓库，而且性能更优*/
     repositories {
         jcenter()
     }
+    /**是声明了android gradle plugin的版本,android studio 2.1正式版必须要求支持gradle plugin 2.1的版本。*/
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.0.0'
+        classpath 'com.android.tools.build:gradle:2.1.0'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

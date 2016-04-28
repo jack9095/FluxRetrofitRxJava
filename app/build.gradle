@@ -10,13 +10,119 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+
+        // dex突破65535的限制
+        multiDexEnabled true
+        // AndroidManifest.xml 里面UMENG_CHANNEL的value为 ${UMENG_CHANNEL_VALUE}
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "channel_name"]
     }
+
+    /**加载源文件中的数据*/
+    sourceSets {
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            java.srcDirs = ['src/main/java']
+            resources.srcDirs = ['src/main/resources']
+            aidl.srcDirs = ['src/main/aidl']
+            renderscript.srcDirs = ['src/maom']
+            res.srcDirs = ['src/main/res']
+            assets.srcDirs = ['src/main/assets']
+            jniLibs.srcDir 'src/main/jniLibs'
+        }
+
+        // Move the tests to tests/java, tests/res, etc...   测试
+        instrumentTest.setRoot('tests')
+
+        // Move the build types to build-types/<type>
+        // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
+        // This moves them out of them default location under src/<type>/... which would
+        // conflict with src/ being used by the main source set.
+        // Adding new build types or product flavors should be accompanied
+        // by a similar customization.
+        /**debug Build Type 路径的设置*/
+        debug.setRoot('build-types/debug')
+        /**release Build Type 路径的设置*/
+        release.setRoot('build-types/release')
+    }
+
     buildTypes {
-        release {
+        debug {
+            // 显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+
+            versionNameSuffix "-debug"
             minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+        }
+
+        release {
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            //混淆
+            minifyEnabled true
+            //Zipalign优化
+            zipAlignEnabled true
+
+            // 移除无用的resource文件
+            shrinkResources true
+            //前一部分代表系统默认的android程序的混淆文件，该文件已经包含了基本的混淆声明
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // 上线签名
+//            signingConfig signingConfigs.relealse
         }
     }
+
+
+    //执行lint检查，有任何的错误或者警告提示，都会终止构建，我们可以将其关掉。
+    lintOptions {
+        abortOnError false
+    }
+
+    //签名
+    signingConfigs {
+        debug {
+//            storeFile file("/Users/wangfei/Desktop/keyStore.jks")
+        }
+        relealse {
+            //这样写就得把签名文件放在项目目录
+            storeFile file("recorder.jks")
+            storePassword "recorder"
+            keyAlias "recorder"
+            keyPassword "recorder"
+        }
+    }
+
+
+    //渠道Flavors，配置不同风格的app
+    productFlavors {
+        GooglePlay {}
+        xiaomi {}
+        umeng {}
+        _360 {}
+        baidu {}
+        wandoujia {}
+    }
+    //批量配置
+    productFlavors.all { flavor ->
+        flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                def fileName = outputFile.name.replace(".apk", "-${defaultConfig.versionName}.apk")
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
+        }
+    }
+
 }
 
 dependencies {

@@ -19,10 +19,10 @@ import fr.castorflex.android.circularprogressbar.CircularProgressBar;
 
 /**
  * Created by Android Studio
- * User: wangfei
+ * User: fei.wang
  * Date: 2016-03-23
  * Time: 9:57
- * QQ: 929728742
+ * Email: 929728742@qq.com
  * Description:
  */
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
@@ -46,7 +46,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         button = (TextView) findViewById(R.id.button);
         progress_bar = (CircularProgressBar) findViewById(R.id.progress_bar);
         button.setOnClickListener(this);
-
         DebugLog.i("王飞");
     }
 
