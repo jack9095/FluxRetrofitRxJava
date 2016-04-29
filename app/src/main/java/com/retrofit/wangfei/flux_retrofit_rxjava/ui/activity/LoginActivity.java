@@ -59,14 +59,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     @Subscribe
-    public void onLoadingStartChangeEvent(LoginStore.LoadingStartChangeEvent changeEvent) {
+    public void onEventMainThread(LoginStore.LoadingStartChangeEvent changeEvent) {
         if (changeEvent != null) {
             progress_bar.setVisibility(View.VISIBLE);
         }
     }
 
     @Subscribe
-    public void onInitViewChangeEvent(LoginStore.InitViewChangeEvent changeEvent) {
+    public void onEventMainThread(LoginStore.InitViewChangeEvent changeEvent) {
         progress_bar.setVisibility(View.GONE);
         if (changeEvent != null) {
             GitHubUser userList = loginStore.getUserList();
@@ -75,7 +75,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     @Subscribe
-    public void onErrorChangeEvent(LoginStore.ErrorChangeEvent changeEvent) {
+    public void onEventMainThread(LoginStore.ErrorChangeEvent changeEvent) {
         progress_bar.setVisibility(View.GONE);
         if (changeEvent != null) {
             Throwable throwable = loginStore.getThrowable();

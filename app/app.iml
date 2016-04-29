@@ -64,14 +64,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/GooglePlay/jni" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/GooglePlay/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/GooglePlay/shaders" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testGooglePlay/res" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testGooglePlay/resources" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testGooglePlay/assets" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testGooglePlay/aidl" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testGooglePlay/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testGooglePlay/jni" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testGooglePlay/rs" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/testGooglePlay/shaders" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestGooglePlay/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestGooglePlay/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestGooglePlay/assets" type="java-test-resource" />
@@ -80,6 +72,14 @@
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestGooglePlay/jni" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestGooglePlay/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestGooglePlay/shaders" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testGooglePlay/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testGooglePlay/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testGooglePlay/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testGooglePlay/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testGooglePlay/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testGooglePlay/jni" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testGooglePlay/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testGooglePlay/shaders" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/build-types/debug/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/build-types/debug/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/build-types/debug/assets" type="java-resource" />
