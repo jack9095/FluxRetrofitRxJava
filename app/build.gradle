@@ -14,7 +14,7 @@ android {
         // dex突破65535的限制
         multiDexEnabled true
         // AndroidManifest.xml 里面UMENG_CHANNEL的value为 ${UMENG_CHANNEL_VALUE}
-        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "channel_name"]
+//        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "channel_name"]
     }
 
     /**加载源文件中的数据*/
@@ -31,7 +31,7 @@ android {
         }
 
         // Move the tests to tests/java, tests/res, etc...   测试
-        instrumentTest.setRoot('tests')
+//        instrumentTest.setRoot('tests')
 
         // Move the build types to build-types/<type>
         // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
@@ -39,27 +39,27 @@ android {
         // conflict with src/ being used by the main source set.
         // Adding new build types or product flavors should be accompanied
         // by a similar customization.
-        /**debug Build Type 路径的设置*/
-        debug.setRoot('build-types/debug')
-        /**release Build Type 路径的设置*/
+        /*debug Build Type 路径的设置*/
+//        debug.setRoot('build-types/debug')
+        /*release Build Type 路径的设置*/
         release.setRoot('build-types/release')
     }
 
     buildTypes {
-        debug {
-            // 显示Log
-            buildConfigField "boolean", "LOG_DEBUG", "true"
-
-            versionNameSuffix "-debug"
-            minifyEnabled false
-            zipAlignEnabled false
-            shrinkResources false
-            signingConfig signingConfigs.debug
-        }
+//        debug {
+//            // 显示Log
+//            buildConfigField "boolean", "LOG_DEBUG", "true"
+//
+//            versionNameSuffix "-debug"
+//            minifyEnabled false
+//            zipAlignEnabled false
+//            shrinkResources false
+//            signingConfig signingConfigs.debug
+//        }
 
         release {
             // 不显示Log
-            buildConfigField "boolean", "LOG_DEBUG", "false"
+//            buildConfigField "boolean", "LOG_DEBUG", "false"
             //混淆
             minifyEnabled true
             //Zipalign优化
@@ -81,47 +81,47 @@ android {
     }
 
     //签名
-    signingConfigs {
-        debug {
-//            storeFile file("/Users/wangfei/Desktop/keyStore.jks")
-        }
-        relealse {
-            //这样写就得把签名文件放在项目目录
-            storeFile file("recorder.jks")
-            storePassword "recorder"
-            keyAlias "recorder"
-            keyPassword "recorder"
-        }
-    }
+//    signingConfigs {
+//        debug {
+////            storeFile file("/Users/wangfei/Desktop/keyStore.jks")
+//        }
+//        relealse {
+//            //这样写就得把签名文件放在项目目录
+//            storeFile file("recorder.jks")
+//            storePassword "recorder"
+//            keyAlias "recorder"
+//            keyPassword "recorder"
+//        }
+//    }
 
 
     //渠道Flavors，配置不同风格的app
-    productFlavors {
-        GooglePlay {}
-        xiaomi {}
-        umeng {}
-        _360 {}
-        baidu {}
-        wandoujia {}
-    }
-    //批量配置
-    productFlavors.all { flavor ->
-        flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
-    }
+//    productFlavors {
+//        GooglePlay {}
+//        xiaomi {}
+//        umeng {}
+//        _360 {}
+//        baidu {}
+//        wandoujia {}
+//    }
+//    //批量配置
+//    productFlavors.all { flavor ->
+//        flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+//    }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
-    }
-    applicationVariants.all { variant ->
-        variant.outputs.each { output ->
-            def outputFile = output.outputFile
-            if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                def fileName = outputFile.name.replace(".apk", "-${defaultConfig.versionName}.apk")
-                output.outputFile = new File(outputFile.parent, fileName)
-            }
-        }
-    }
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_1_7
+//        targetCompatibility JavaVersion.VERSION_1_7
+//    }
+//    applicationVariants.all { variant ->
+//        variant.outputs.each { output ->
+//            def outputFile = output.outputFile
+//            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+//                def fileName = outputFile.name.replace(".apk", "-${defaultConfig.versionName}.apk")
+//                output.outputFile = new File(outputFile.parent, fileName)
+//            }
+//        }
+//    }
 
 }
 

@@ -54,7 +54,9 @@ public class MainDrawerLayoutPresenter extends BasePresenter implements View.OnC
     private MainActivity mMainActivity;
 
     /**主页面侧拉框的逻辑*/
-    public MainDrawerLayoutPresenter(MainActivity mMainActivity) {
+    public
+
+    MainDrawerLayoutPresenter(MainActivity mMainActivity) {
         this.mMainActivity = mMainActivity;
     }
 

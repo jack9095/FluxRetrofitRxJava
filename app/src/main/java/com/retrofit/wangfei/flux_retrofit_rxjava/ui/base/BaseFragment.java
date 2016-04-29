@@ -69,7 +69,7 @@ public abstract class BaseFragment extends Fragment{
     /**当创建fragment的UI被初始化时调用,onCreateView返回的就是fragment要显示的view*/
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = initView(inflater);
        return view;
     }

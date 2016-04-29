@@ -96,7 +96,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         switch (v.getId()) {
             case R.id.button:
                 DebugLog.e("徐汇");
-                loginActionCreator.fetechData(name.getText().toString(), password.getText().toString());
+//                loginActionCreator.fetechData(name.getText().toString(), password.getText().toString());
                 readyGo(MainActivity.class);
                 break;
         }

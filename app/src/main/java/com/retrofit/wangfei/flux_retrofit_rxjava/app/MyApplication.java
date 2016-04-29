@@ -29,8 +29,8 @@ public class MyApplication extends Application{
         super.onCreate();
         CrashHandler.getInstance().init(this); // 全局捕获异常日志
         ToastUtils.register(this.getApplicationContext());
-
-        this.enabledStrictMode();  // 初始化检查程序中违例的工具，上线的时候不能用
+        DebugLog.isDebug = true;
+//        this.enabledStrictMode();  // 初始化检查程序中违例的工具，上线的时候不能用
 
         //LeakCanary检测OOM
         LeakCanary.install(this);

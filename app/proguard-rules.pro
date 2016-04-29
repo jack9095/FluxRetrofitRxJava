@@ -16,7 +16,9 @@
 #   public *;
 #}
 
-#指定代码的压缩级别
+
+
+    #指定代码的压缩级别
     -optimizationpasses 5
 
     #包明不混合大小写
@@ -54,7 +56,6 @@
     -keep public class * extends android.support.v4.app.Fragment
 
 
-
     #忽略警告
     -ignorewarning
 
@@ -72,7 +73,7 @@
     ########记录生成的日志数据，gradle build时 在本项目根目录输出-end######
 
 
-    #####混淆保护自己项目的部分代码以及引用的第三方jar包library#######
+    #####混淆保护自己项目的部分代码以及引用的第三方jar包library start #######
 
     #-libraryjars libs/umeng-analytics-v5.2.4.jar
 
@@ -84,6 +85,13 @@
     -keep class com.lippi.recorder.iirfilterdesigner.** {*; }
     #友盟
     -keep class com.umeng.**{*;}
+
+    #支付宝
+    -keep class com.alipay.android.app.IAliPay{*;}
+    -keep class com.alipay.android.app.IAlixPay{*;}
+    -keep class com.alipay.android.app.IRemoteServiceCallback{*;}
+    -keep class com.alipay.android.app.lib.ResourceMap{*;}
+
     #项目特殊处理代码
 
     #忽略警告
@@ -99,7 +107,7 @@
     #如果引用了v4或者v7包
     -dontwarn android.support.**
 
-    ####混淆保护自己项目的部分代码以及引用的第三方jar包library-end####
+    ####混淆保护自己项目的部分代码以及引用的第三方jar包library-end ####
 
     -keep public class * extends android.view.View {
         public <init>(android.content.Context);
@@ -190,3 +198,35 @@
     -keepclassmembers class * extends de.greenrobot.event.util.ThrowableFailureEvent {
         <init>(java.lang.Throwable);
     }
+
+    #Butterknife混淆配置
+    -keep class butterknife.** { *; }
+    -dontwarn butterknife.internal.**
+    -keep class **$$ViewBinder { *; }
+    -keepclasseswithmembernames class * {
+        @butterknife.* <fields>;
+    }
+    -keepclasseswithmembernames class * {
+        @butterknife.* <methods>;
+    }
+
+    # Retrofit 混淆配置
+    -dontwarn retrofit.**
+    -keep class retrofit.** { *; }
+    -keepattributes Signature
+    -keepattributes Exceptions
+
+    # OkHttp 混淆配置
+    -dontwarn okio.**
+    -dontwarn com.squareup.okhttp.**
+
+    # RxJava 混淆配置
+    # RxAndroid will soon ship with rules so this may not be needed in the future
+    # https://github.com/ReactiveX/RxAndroid/issues/219
+    -dontwarn sun.misc.Unsafe
+    -keep class rx.internal.util.unsafe.** { *; }
+
+    # Produces useful obfuscated stack traces
+    # http://proguard.sourceforge.net/manual/examples.html#stacktrace
+    -renamesourcefileattribute SourceFile
+    -keepattributes SourceFile,LineNumberTable

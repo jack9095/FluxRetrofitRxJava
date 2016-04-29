@@ -71,7 +71,7 @@ public class LoginActionCreator extends ActionCreator {
     }
 
     @NonNull
-    private List<Observable<GitHubUser>> getObservables(String user,String pass) {
+    public List<Observable<GitHubUser>> getObservables(String user,String pass) {
         List<Observable<GitHubUser>>  lists = new ArrayList<>();
         Observable<GitHubUser> result = GitHubApiUtils.getInstance().getGitHubApi().login(user,pass);// 利用网络请求拿到的数据
         lists.add(result);
